@@ -1,16 +1,27 @@
-import { useInput } from 'ink';
+import { Box, Text, useInput } from 'ink';
 import BigText from 'ink-big-text';
 import Gradient from 'ink-gradient';
 import React from 'react';
 
-export function Welcome({ onStart }) {
+export function Welcome({ setScreen }) {
   useInput((input) => {
-    if (input === 'q') exit();
+    if (input) {
+      setScreen('navigation');
+    }
   });
 
   return (
-    <Gradient name="rainbow">
-      <BigText align="center" font="tiny" text="Welcome to my Portfolio!" />
-    </Gradient>
+    <Box flexDirection="column" alignItems="center">
+      <Box flexDirection="column">
+        <Gradient name="rainbow">
+          <BigText font="tiny" text="Jan Burghardt" />
+        </Gradient>
+        <Text>Fullstack Developer · CPQ Specialist · Self-taugh</Text>
+      </Box>
+      <Box marginTop={1} marginBottom={1}>
+        <Text>─────</Text>
+      </Box>
+      <Text dimColor>Press any key to continue...</Text>
+    </Box>
   );
 }

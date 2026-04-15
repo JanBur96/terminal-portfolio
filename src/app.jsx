@@ -1,7 +1,10 @@
-import { Box } from 'ink';
+import { Box, Text } from 'ink';
 import { useState } from 'react';
 import { Welcome } from './screens/Welcome';
 import React from 'react';
+import { Navigation } from './screens/Navigation';
+import Gradient from 'ink-gradient';
+import { ContainerBox } from './components/ContainerBox';
 
 export default function App() {
   const [screen, setScreen] = useState('welcome');
@@ -13,8 +16,16 @@ export default function App() {
   //   });
 
   return (
-    <Box flexDirection="column" padding={1}>
-      {screen === 'welcome' && <Welcome />}
+    <Box flexDirection="column">
+      {screen === 'welcome' && <Welcome setScreen={setScreen} />}
+      {screen !== 'welcome' && (
+        <ContainerBox marginLeft={1} marginTop={1}>
+          <Gradient name="rainbow">
+            <Text bold>Jan Burghardt - Portfolio</Text>
+          </Gradient>
+        </ContainerBox>
+      )}
+      {screen === 'navigation' && <Navigation setScreen={setScreen} />}
     </Box>
   );
 }
