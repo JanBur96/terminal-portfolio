@@ -5,6 +5,8 @@ import React from 'react';
 import { Navigation } from './screens/Navigation';
 import Gradient from 'ink-gradient';
 import { ContainerBox } from './components/ContainerBox';
+import { Footer } from './components/Footer';
+import { About } from './screens/About';
 
 export default function App() {
   const [screen, setScreen] = useState('welcome');
@@ -26,6 +28,7 @@ export default function App() {
         </ContainerBox>
       )}
       {screen === 'navigation' && <Navigation setScreen={setScreen} />}
+      {screen === 'about' && <About setScreen={setScreen} />}
     </Box>
   );
 }

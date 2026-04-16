@@ -1,6 +1,8 @@
 import React from 'react';
 import SelectInput from 'ink-select-input';
 import { ContainerBox } from '../components/ContainerBox';
+import { Text } from 'ink';
+import { Footer } from '../components/Footer';
 
 export function Navigation({ setScreen }) {
   const items = [
@@ -15,9 +17,27 @@ export function Navigation({ setScreen }) {
     setScreen(item.value);
   };
 
+  const Indicator = ({ isSelected }) => (
+    <Text color="cyan">{isSelected ? '❯ ' : '  '}</Text>
+  );
+
+  const Item = ({ isSelected, label }) => (
+    <Text bold={isSelected} color={isSelected ? 'cyan' : 'white'}>
+      {label}
+    </Text>
+  );
+
   return (
-    <ContainerBox marginTop={1} paddingX={1}>
-      <SelectInput items={items} onSelect={handleSelect} />
+    <ContainerBox>
+      <SelectInput
+        items={items}
+        onSelect={handleSelect}
+        indicatorComponent={Indicator}
+        itemComponent={Item}
+      />
+      <Footer>
+        <Text color="dim">↑↓ navigate · enter select · q quit</Text>
+      </Footer>
     </ContainerBox>
   );
 }
