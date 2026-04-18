@@ -1,28 +1,26 @@
 import React from 'react';
 import SelectInput from 'ink-select-input';
-import { ContainerBox } from '../components/ContainerBox';
 import { Text } from 'ink';
-import { Footer } from '../components/Footer';
+import { ContainerBox } from '../components/ContainerBox.jsx';
+import { useTheme } from '../theme.js';
 
-export function Navigation({ setScreen }) {
-  const items = [
-    { label: '👤 About Me', value: 'about' },
-    { label: '📦 Projects', value: 'projects' },
-    { label: '🛠️ Skills', value: 'skills' },
-    { label: '🌐 Fetch', value: 'fetch' },
-    { label: '✉️ Contact', value: 'contact' },
-  ];
+const items = [
+  { label: '👤 About Me', value: 'about' },
+  { label: '📦 Projects', value: 'projects' },
+  { label: '🛠️ Skills', value: 'skills' },
+  { label: '🌐 Fetch', value: 'fetch' },
+  { label: '✉️ Contact', value: 'contact' },
+];
 
-  const handleSelect = (item) => {
-    setScreen(item.value);
-  };
+export function Navigation({ navigate }) {
+  const theme = useTheme();
 
   const Indicator = ({ isSelected }) => (
-    <Text color="cyan">{isSelected ? '❯ ' : '  '}</Text>
+    <Text color={theme.accent}>{isSelected ? '❯ ' : '  '}</Text>
   );
 
   const Item = ({ isSelected, label }) => (
-    <Text bold={isSelected} color={isSelected ? 'cyan' : 'white'}>
+    <Text bold={isSelected} color={isSelected ? theme.accent : 'white'}>
       {label}
     </Text>
   );
@@ -31,13 +29,10 @@ export function Navigation({ setScreen }) {
     <ContainerBox>
       <SelectInput
         items={items}
-        onSelect={handleSelect}
+        onSelect={(item) => navigate(item.value)}
         indicatorComponent={Indicator}
         itemComponent={Item}
       />
-      <Footer>
-        <Text color="dim">↑↓ navigate · enter select · q quit</Text>
-      </Footer>
     </ContainerBox>
   );
 }

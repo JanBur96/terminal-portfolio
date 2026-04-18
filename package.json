@@ -1,6 +1,6 @@
 {
   "name": "janburghardt-portfolio",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Terminal-based portfolio powered by Ink. Because why open a browser when you have a terminal.",
   "license": "MIT",
   "author": "Jan-Philipp Burghardt",
@@ -9,8 +9,8 @@
     "janburghardt": "bin/cli.jsx"
   },
   "scripts": {
-    "dev": "tsx bin/cli.jsx",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "tsx bin/cli.jsx",
+    "dev": "tsx bin/cli.jsx"
   },
   "keywords": [
     "cli",
@@ -39,10 +39,10 @@
     "ink-gradient": "^4.0.0",
     "ink-link": "^5.0.0",
     "ink-select-input": "^6.2.0",
-    "react": "^19.2.5"
+    "react": "^19.2.5",
+    "tsx": "^4.21.0"
   },
   "devDependencies": {
-    "@babel/preset-react": "^7.28.5",
-    "tsx": "^4.21.0"
+    "@babel/preset-react": "^7.28.5"
   }
 }
